@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.application' version '8.5.2' apply false
+}
+
+tasks.register('scoreSelfTest', JavaExec) {
+    dependsOn 'compileScoreSelfTest'
+    classpath = files(layout.buildDirectory.dir('score-test'))
+    mainClass = 'ScoreSelfTest'
+}
+tasks.register('compileScoreSelfTest', JavaCompile) {
+    source = files(fileTree('app/src/main/java/hr/stratosx/smartwake/score'), 'tools/ScoreSelfTest.java')
+    classpath = files()
+    destinationDirectory = layout.buildDirectory.dir('score-test')
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}

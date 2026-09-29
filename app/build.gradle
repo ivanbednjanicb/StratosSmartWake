@@ -1,0 +1,33 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'hr.stratosx.smartwake'
+    compileSdk 34
+
+    lint {
+        // Sideload-only Android 5.x watch prototype; Play target policy is inapplicable.
+        disable 'ExpiredTargetSdkVersion'
+    }
+
+    defaultConfig {
+        applicationId 'hr.stratosx.smartwake'
+        minSdk 21
+        targetSdk 22
+        versionCode 26
+        versionName '0.26-dev'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
